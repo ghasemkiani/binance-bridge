@@ -1,0 +1,37 @@
+{
+  "name": "@ghasemkiani/binance-bridge",
+  "version": "1.0.0",
+  "description": "Binance Chain and Binance Smart Chain bridge utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghasemkiani/binance-bridge.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "cryptocurrency",
+    "blockchain",
+    "binance",
+    "binance-chain",
+    "binance-smart-chain",
+    "binance-bridge",
+    "bridge"
+  ],
+  "author": "Ghasem Kiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghasemkiani/binance-bridge/issues"
+  },
+  "homepage": "https://github.com/ghasemkiani/binance-bridge#readme",
+  "dependencies": {
+    "@ghasemkiani/base": "github:ghasemkiani/base",
+    "@ghasemkiani/base-utils": "github:ghasemkiani/base-utils",
+    "@ghasemkiani/io": "github:ghasemkiani/io",
+    "@ghasemkiani/binance-chain": "github:ghasemkiani/binance-chain",
+    "@ghasemkiani/binance-smart-chain": "github:ghasemkiani/binance-smart-chain"
+  }
+}

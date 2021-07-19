@@ -10,8 +10,9 @@ const {Account: AccountBsc} = require("@ghasemkiani/binance-smart-chain/account"
 const {Account: AccountBc} = require("@ghasemkiani/binance-chain/account");
 
 class Bridge extends Base {
-	 async toTransferToBc({account, toAddress, tokenId, amount, amount_, expireTime}) {
-		expireTime ||= quantity.time().now().u("min").delta(30).u("ms").n();
+	async toTransferToBc({account, toAddress, tokenId, amount, amount_, expireTime}) {
+		let bridge = this;
+		expireTime ||= quantity.time().now().u("min").delta(bridge.expireMins).u("ms").n();
 		let isBnb = (tokenId === "BNB");
 		
 		let accountBc = new AccountBc({address: toAddress});
@@ -66,8 +67,9 @@ class Bridge extends Base {
 		let result = await hub.toCallWriteWithValue(value_, "transferOut", contractAddr, recipient, amount_, expireTime);
 		return result;
 	}
-	 async toTransferToBsc({account, toAddress, symbol, amount, expireTime}) {
-		expireTime ||= quantity.time().now().u("min").delta(30).u("ms").n();
+	async toTransferToBsc({account, toAddress, symbol, amount, expireTime}) {
+		let bridge = this;
+		expireTime ||= quantity.time().now().u("min").delta(bridge.expireMins).u("ms").n();
 		await account.toInit();
 		
 		let fromAddress = account.address;
@@ -80,7 +82,7 @@ class Bridge extends Base {
 	}
 }
 cutil.extend(Bridge.prototype, {
-	
+	expireMins: 30,
 });
 
 module.exports = {Bridge};

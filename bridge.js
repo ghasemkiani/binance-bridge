@@ -1,13 +1,13 @@
-const {cutil} = require("@ghasemkiani/base/cutil");
-const {Obj: Base} = require("@ghasemkiani/base/obj");
-const {Inputter} = require("@ghasemkiani/io/inputter");
-const {quantity} = require("@ghasemkiani/base-utils/quantity");
-const {util: utilBsc} = require("@ghasemkiani/binance-smart-chain/util");
-const {util: utilBc} = require("@ghasemkiani/binance-chain/util");
-const {Token: TokenBsc} = require("@ghasemkiani/binance-smart-chain/token");
-const {TokenHub} = require("@ghasemkiani/binance-smart-chain/token-hub");
-const {Account: AccountBsc} = require("@ghasemkiani/binance-smart-chain/account");
-const {Account: AccountBc} = require("@ghasemkiani/binance-chain/account");
+import {cutil} from "@ghasemkiani/base";
+import {Obj as Base} from "@ghasemkiani/base";
+import {Inputter} from "@ghasemkiani/io";
+import {quantity} from "@ghasemkiani/base-utils";
+import {util as utilBsc} from "@ghasemkiani/binance-smart-chain"
+import {util as utilBc} from "@ghasemkiani/binance-chain";
+import {Token as TokenBsc} from "@ghasemkiani/binance-smart-chain"
+import {TokenHub} from "@ghasemkiani/binance-smart-chain";
+import {Account as AccountBsc} from "@ghasemkiani/binance-smart-chain"
+import {Account as AccountBc} from "@ghasemkiani/binance-chain";
 
 class Bridge extends Base {
 	async toTransferToBc({account, toAddress, tokenId, amount, amount_, expireTime}) {
@@ -85,6 +85,6 @@ cutil.extend(Bridge.prototype, {
 	expireMins: 30,
 });
 
-module.exports = {Bridge};
+export {Bridge};
 
 // binance-chain/cross-chain-transfer-sample

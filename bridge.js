@@ -58,8 +58,9 @@ class Bridge extends Base {
 			console.log({allowance_});
 			if (BigInt(allowance_) < BigInt(amount_)) {
 				console.log(`Approving...`);
-				console.log({spender, amount_});
-				let result = await token.toApprove_(spender, amount_);
+				let amount1_ = (10n * BigInt(amount_)).toString();
+				console.log({spender, amount1_});
+				let result = await token.toApprove_(spender, amount1_);
 				console.log(JSON.stringify(result));
 			}
 		}

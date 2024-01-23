@@ -2,12 +2,12 @@ import {cutil} from "@ghasemkiani/base";
 import {Obj as Base} from "@ghasemkiani/base";
 import {Inputter} from "@ghasemkiani/io";
 import {quantity} from "@ghasemkiani/base-utils";
-import {util as utilBsc} from "@ghasemkiani/binance-smart-chain"
-import {util as utilBc} from "@ghasemkiani/binance-chain";
-import {Token as TokenBsc} from "@ghasemkiani/binance-smart-chain"
-import {TokenHub} from "@ghasemkiani/binance-smart-chain";
-import {Account as AccountBsc} from "@ghasemkiani/binance-smart-chain"
-import {Account as AccountBc} from "@ghasemkiani/binance-chain";
+import {util as utilBsc} from "@ghasemkiani/bnb-smart-chain"
+import {util as utilBc} from "@ghasemkiani/bnb-beacon-chain";
+import {Token as TokenBsc} from "@ghasemkiani/bnb-smart-chain"
+import {TokenHub} from "@ghasemkiani/bnb-smart-chain";
+import {Account as AccountBsc} from "@ghasemkiani/bnb-smart-chain"
+import {Account as AccountBc} from "@ghasemkiani/bnb-beacon-chain";
 
 class Bridge extends Base {
 	async toTransferToBc({account, toAddress, tokenId, amount, amount_, expireTime}) {
@@ -74,6 +74,12 @@ class Bridge extends Base {
 		await account.toInit();
 		
 		let fromAddress = account.address;
+		
+		if (amount <= 0) {
+			await account.toGetBalances();
+			let balance = account.bal(symbol);
+			amount += balance;
+		}
 		
 		console.log(`Transferring to Binance Smart Chain from address:\n${account.address}`);
 		console.log({toAddress, fromAddress, amount, symbol, expireTime});
